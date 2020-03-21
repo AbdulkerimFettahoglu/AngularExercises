@@ -8,6 +8,15 @@ import { Model, ModelItem } from './Model';
 })
 
 export class AppComponent {
+  /*ngAfterViewInit() {
+    setTimeout(() => {
+      let myItems:ModelItem[] = this.getItems();
+      console.log(myItems[0]);
+      myItems[0].action=false;
+      console.log(myItems[0]);
+    });
+  }*/
+
   model = new Model();
 
   getUser():string {
@@ -15,7 +24,7 @@ export class AppComponent {
   }
 
   getItems():ModelItem[] {
-    return this.model.items;
+    return this.model.items.filter(item => !item.action);
   }
 }
 
