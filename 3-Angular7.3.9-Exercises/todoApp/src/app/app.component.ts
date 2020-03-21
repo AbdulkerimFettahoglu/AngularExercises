@@ -26,5 +26,13 @@ export class AppComponent {
   getItems():ModelItem[] {
     return this.model.items.filter(item => !item.action);
   }
+
+  addModelItem(value: string) {
+    if(value!="") {
+      this.model.items.push(new ModelItem(value,false));
+    } else {
+      alert("Item can not be null");
+    }
+  }
 }
 
