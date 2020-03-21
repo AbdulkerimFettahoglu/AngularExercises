@@ -18,12 +18,16 @@ export class AppComponent {
   }*/
 
   model = new Model();
+  displayAll = false;
 
   getUser():string {
     return this.model.user;
   }
 
   getItems():ModelItem[] {
+    if (this.displayAll) {
+      return this.model.items;
+    }
     return this.model.items.filter(item => !item.action);
   }
 
