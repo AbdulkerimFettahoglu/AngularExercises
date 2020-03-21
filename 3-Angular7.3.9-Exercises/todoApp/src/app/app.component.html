@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-5 align-items-center">
       <h3 class="bg-primary text-white p-3">
-        [{{ user }}] To Do List
+        [{{ getUser() }}] To Do List
       </h3>
 
       <div class="input-group">
@@ -15,14 +15,19 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th>Index</th>
             <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items">
+          <tr *ngFor="let item of getItems();let i=index">
+            <td>{{ i }}</td>
             <td>{{ item.description}}</td>
-            <td>{{ item.action }}</td>
+            <td [ngSwitch]="item.action">
+              <span *ngSwitchCase="true">Yes</span>
+              <span *ngSwitchCase="false">No</span>
+            </td>
           </tr>
         </tbody>
       </table>
