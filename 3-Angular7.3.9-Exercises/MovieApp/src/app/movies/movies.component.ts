@@ -15,7 +15,9 @@ export class MoviesComponent {
     constructor(private movieService: MovieService) {}
 
     ngOnInit(): void {
-        this.array = this.movieService.getMovies();
+        this.movieService.getMovies().subscribe(movies=>{
+            this.array = movies;
+        });
     }
 
     onSelected(movie:Movie) {
