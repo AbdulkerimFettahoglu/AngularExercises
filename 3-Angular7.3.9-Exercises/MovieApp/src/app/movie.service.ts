@@ -9,10 +9,20 @@ import { LoggingService } from './logging.service';
 })
 export class MovieService {
 
-  constructor(private loggingService: LoggingService) { }
+  movies: Movie[];
+
+  constructor(private loggingService: LoggingService) { 
+    this.loggingService.add("constructor function was called.");
+    this.movies = Movies;
+  }
 
   getMovies(): Observable<Movie[]> {
     this.loggingService.add("getMovies function was called.");
-    return of(Movies);
+    return of(this.movies);
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    this.loggingService.add("getMovie function was called.");
+    return of(this.movies[id]);
   }
 }
